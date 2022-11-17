@@ -1,6 +1,5 @@
-package com.test;
 
-import com.danbay.utils.DateUtils;
+import com.common.utils.DateUtils;
 import org.joda.time.DateTime;
 
 import java.text.DateFormat;
@@ -14,7 +13,7 @@ import java.util.Date;
  * @Description TestA
  * @date 2018-06-13 16:49
  **/
-public class TestA {
+public class TestDateUtils {
     public static void main(String[] args) {
 //        Calendar calendar = Calendar.getInstance();
 ////        calendar.setTimeInMillis(1528300799000L);

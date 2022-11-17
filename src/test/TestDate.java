@@ -1,4 +1,3 @@
-package com.test;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -8,7 +7,7 @@ import java.util.Calendar;
  * @Description TestMain
  * @date 2018-05-15 19:49
  **/
-public class TestMain {
+public class TestDate {
 
     public static void main(String[] args) {
         System.out.println(String.format("%02d", 9));

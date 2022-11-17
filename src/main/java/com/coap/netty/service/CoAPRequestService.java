@@ -1,14 +1,12 @@
 package com.coap.netty.service;
 
 import com.coap.netty.util.CoAPUtil;
-import com.danbay.utils.DateUtils;
 import com.google.gson.Gson;
 import org.eclipse.californium.core.coap.CoAP;
 import org.eclipse.californium.core.coap.OptionSet;
 import org.eclipse.californium.core.coap.Request;
 import org.eclipse.californium.core.coap.Response;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 

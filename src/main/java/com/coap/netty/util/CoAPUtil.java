@@ -1,7 +1,7 @@
 package com.coap.netty.util;
 
-import com.danbay.utils.CollectionUtils;
-import com.danbay.utils.StringUtils;
+import com.common.utils.CollectionUtils;
+import com.common.utils.StringUtils;
 import com.google.common.base.Preconditions;
 import org.eclipse.californium.core.coap.*;
 

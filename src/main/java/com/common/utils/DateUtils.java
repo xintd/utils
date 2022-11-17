@@ -1,4 +1,4 @@
-package com.danbay.utils;
+package com.common.utils;
 
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;

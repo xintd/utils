@@ -1,4 +1,4 @@
-package com.danbay.utils.model;
+package com.common.utils.model;
 
 /**
  * Created by carter on 2017/3/2. Copyright © 2016 －2017 旦倍科技

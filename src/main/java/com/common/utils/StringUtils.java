@@ -1,4 +1,4 @@
-package com.danbay.utils;
+package com.common.utils;
 
 import com.google.common.collect.Lists;
 
