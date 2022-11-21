@@ -22,17 +22,17 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class PDFHelper {
+public class PDFHelperApose {
 
     public static void main(String[] args) {
         //修改版jar需要加载一次license
-        //try(InputStream is = PDFHelper.class.getClassLoader().getResourceAsStream("license.xml")) {
-        //    License license = new License();
-        //    license.setLicense(is);
-        //} catch (Exception e) {
-        //    throw new RuntimeException(e);
-        //}
-        doc2pdf("C:\\Users\\Administrator\\Documents\\WXWork\\1688852358399777\\Cache\\File\\2022-11\\2.docx");
+        try(InputStream is = PDFHelperApose.class.getClassLoader().getResourceAsStream("license.xml")) {
+            License license = new License();
+            license.setLicense(is);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        doc2pdf("C:\\Users\\Administrator\\Documents\\WXWork\\1688852358399777\\Cache\\File\\2022-11\\1.doc");
 
     }
 
