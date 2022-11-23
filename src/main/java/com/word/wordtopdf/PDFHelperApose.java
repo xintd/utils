@@ -1,8 +1,6 @@
 package com.word.wordtopdf;
 
-import com.aspose.words.Document;
-import com.aspose.words.License;
-import com.aspose.words.SaveFormat;
+import com.aspose.words.*;
 import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.contentstream.operator.Operator;
 import org.apache.pdfbox.cos.COSArray;
@@ -22,6 +20,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * @ClassName: PDFHelperApose.java
+ * @Description:  APOSE word 转 pdf
+ */
 public class PDFHelperApose {
 
     public static void main(String[] args) {
@@ -32,7 +34,7 @@ public class PDFHelperApose {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        doc2pdf("C:\\Users\\Administrator\\Documents\\WXWork\\1688852358399777\\Cache\\File\\2022-11\\1.doc");
+        doc2pdf("C:\\Users\\Administrator\\Documents\\1.docx");
 
     }
 
@@ -47,19 +49,19 @@ public class PDFHelperApose {
                 Operator op = (Operator) next;
                 String pstring = "";
                 int prej = 0;
-                if (op.getName().equals("Tj")) {
-                    COSString previous = (COSString) tokens.get(j - 1);
+                Object preTikens = tokens.get(j - 1);
+                if (preTikens instanceof COSString) {
+                    COSString previous = (COSString) preTikens;
                     String string = previous.getString();
                     string = string.replaceFirst(searchString, replacement);
                     previous.setValue(string.getBytes());
-                } else if (op.getName().equals("TJ")) {
-                    COSArray previous = (COSArray) tokens.get(j - 1);
+                } else if (preTikens instanceof COSArray) {
+                    COSArray previous = (COSArray) preTikens;
                     for (int k = 0; k < previous.size(); k++) {
                         Object arrElement = previous.getObject(k);
                         if (arrElement instanceof COSString) {
                             COSString cosString = (COSString) arrElement;
                             String string = cosString.getString();
-
                             if (j == prej) {
                                 pstring += string;
                             } else {
@@ -148,8 +150,11 @@ public class PDFHelperApose {
             String pdfPath=wordPath.substring(0,wordPath.lastIndexOf("."))+".pdf";
             File file = new File(pdfPath);
             FileOutputStream os = new FileOutputStream(file);
-            //Address是将要被转化的word文档
+            //wordPath是将要被转化的word文档
             Document doc = new Document(wordPath);
+            //WPS 和 Microsoft Word 似乎使用不同的默认 Space After。 如果 Space After 更改为 0,
+            // 则可以生成与 WPS 中获得的内容相近的 PDF
+            doc.getStyles().get("Normal").getParagraphFormat().setSpaceAfter(0);
             //全面支持DOC, DOCX, OOXML, RTF HTML, OpenDocument, PDF, EPUB, XPS, SWF 相互转换
             doc.save(os, SaveFormat.PDF);
             os.close();
@@ -163,7 +168,5 @@ public class PDFHelperApose {
             e.printStackTrace();
         }
     }
-
-
 }
 
