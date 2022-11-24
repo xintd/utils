@@ -28,12 +28,12 @@ public class PDFHelperApose {
 
     public static void main(String[] args) {
         //修改版jar需要加载一次license
-        try(InputStream is = PDFHelperApose.class.getClassLoader().getResourceAsStream("license.xml")) {
-            License license = new License();
-            license.setLicense(is);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        //try(InputStream is = PDFHelperApose.class.getClassLoader().getResourceAsStream("license.xml")) {
+        //    License license = new License();
+        //    license.setLicense(is);
+        //} catch (Exception e) {
+        //    throw new RuntimeException(e);
+        //}
         doc2pdf("C:\\Users\\Administrator\\Documents\\1.docx");
 
     }
@@ -154,7 +154,11 @@ public class PDFHelperApose {
             Document doc = new Document(wordPath);
             //WPS 和 Microsoft Word 似乎使用不同的默认 Space After。 如果 Space After 更改为 0,
             // 则可以生成与 WPS 中获得的内容相近的 PDF
-            doc.getStyles().get("Normal").getParagraphFormat().setSpaceAfter(0);
+            String nameOfApplication = doc.getBuiltInDocumentProperties().get("NameOfApplication").getValue().toString();
+            if(nameOfApplication.toUpperCase().contains("WPS")){
+                doc.getStyles().get("Normal").getParagraphFormat().setSpaceAfter(0);
+            }
+
             //全面支持DOC, DOCX, OOXML, RTF HTML, OpenDocument, PDF, EPUB, XPS, SWF 相互转换
             doc.save(os, SaveFormat.PDF);
             os.close();
