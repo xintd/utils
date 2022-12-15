@@ -34,14 +34,13 @@ public class Crack {
     public static void modifyWordsJar() {
         try {
             //这一步是完整的jar包路径,选择自己解压的jar目录
-            ClassPool.getDefault().insertClassPath("C:\\Users\\Administrator\\Downloads\\aspose-words-22.11-jdk17.jar");
+            ClassPool.getDefault().insertClassPath("C:\\Users\\Administrator\\Downloads\\aspose-words-22.12-jdk17.jar");
             //获取指定的class文件对象
-            CtClass zzYgOClass = ClassPool.getDefault().getCtClass("com.aspose.words.zzW93");
+            CtClass zzYgOClass = ClassPool.getDefault().getCtClass("com.aspose.words.zzYvW");
             //从class对象中解析获取指定的方法
-            CtMethod[] methodA = zzYgOClass.getDeclaredMethods("zzXDv");
+            CtMethod[] methodA = zzYgOClass.getDeclaredMethods("zzjS");
             //遍历重载的方法
             /**
-             * this.zzZ2a = new java.util.Date(Long.MAX_VALUE);//Date赋值最大值
              * this.zzWn1 = new java.util.Date(Long.MAX_VALUE);//Date赋值最大值
              * this.zzWHy = zzZy.zzWrO;//直接返回验证成功的执行
              * zzYRG = this;//直接返回验证成功的执行
@@ -49,19 +48,19 @@ public class Crack {
              */
             for (CtMethod ctMethod : methodA) {
                 CtClass[] ps = ctMethod.getParameterTypes();
-                if (ctMethod.getName().equals("zzXDv") && ps[0].getName().contains("InputStream")) {
+                if ("zzjS".equals(ctMethod.getName()) && ps[0].getName().contains("InputStream")) {
                     System.out.println("ps[0].getName==" + ps[0].getName());
                     //替换指定方法的方法体
-                    ctMethod.setBody("{this.zzWgk = new java.util.Date(Long.MAX_VALUE);this.zz5Z = com.aspose.words.zzZSu.zzYdE;zzOi = this;}");
+                    ctMethod.setBody("{this.zzZxB = new java.util.Date(253402300799999L);this.zzWbe = com.aspose.words.zzZ8h.zzW8b;zzZAO = this;}");
                 }
             }
             //这一步就是将破译完的代码放在桌面上
             zzYgOClass.writeFile("C:\\Users\\Administrator\\Downloads\\");
 
             //获取指定的class文件对象
-            CtClass zzZUiClass = ClassPool.getDefault().getCtClass("com.aspose.words.zzZCf");
+            CtClass zzZUiClass = ClassPool.getDefault().getCtClass("com.aspose.words.zzZ6D");
             //从class对象中解析获取指定的方法
-            CtMethod methodB = zzZUiClass.getDeclaredMethod("zzvE");
+            CtMethod methodB = zzZUiClass.getDeclaredMethod("zzZ1U");
             //替换指定方法的方法体
             methodB.setBody("{return 256;}");
             //这一步就是将破译完的代码放在桌面上
